@@ -10,7 +10,6 @@ La première étape dans ce projet est de créer notre modèle en utilisant la l
 Notre modèle est représenté de la façon suivante:
 
 ![Description du modele](Model.png)
-Format: ![Alt Text](url)
 
 Ce fichier permet donc de créer notre modèle, de l'entraîner et enfin de sauvegarder ce modèle. Ici, deux versions sont sauvegardées:
 
