@@ -35,8 +35,8 @@ Afin de tester le projet, il faut suivre les instructions suivantes:
 1. Télécharger Tensorflow via le lien Github suivant: [Tensorflow](https://github.com/tensorflow/tensorflow)
 1. Ajouter le dossier **micro_mnist** de ce projet dans le répertoire **tensorflow-master/tensorflow/lite/micro/examples**
 1. Placez vous ensuite dans le répertoire **tensorflow-master** et exécutez la commande suivante, qui créera un fichier binaire **micro_mnist** du projet :
-  1. **make -f tensorflow/lite/micro/tools/make/Makefile micro_mnist
+  1. **make -f tensorflow/lite/micro/tools/make/Makefile micro_mnist**
 1. Ensuite exécutez la commande suivante, en remplaçant le répertoire **votre_version**:
-  1. **tensorflow/lite/micro/tools/make/gen/<votre_version>/bin/micro_speech**
+  1. **tensorflow/lite/micro/tools/make/gen/<votre_version>/bin/micro_speech**.
   En éxécutant le fichier binaire, vous devriez voir les prédictions faites par le modèle pour les données du fichier **mnist_test_data.h** et la précision de notre modèle. Cela s'affiche de la façon suivante:
   ![Prédictions du modèle TF Lite Micro](Pred.png)
