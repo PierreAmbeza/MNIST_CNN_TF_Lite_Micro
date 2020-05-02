@@ -41,4 +41,4 @@ Afin de tester le projet, il faut suivre les instructions suivantes:
 1. Ensuite exécutez la commande suivante, en remplaçant le répertoire **votre_version**:
   1. **tensorflow/lite/micro/tools/make/gen/<votre_version>/bin/micro_speech**.
   En éxécutant le fichier binaire, vous devriez voir les prédictions faites par le modèle pour les données du fichier **mnist_test_data.h** et la précision de notre modèle. Cela s'affiche de la façon suivante:
-  ![Prédictions du modèle TF Lite Micro](Pred.png)
+  ![Prédictions du modèle TF Lite Micro](Predictions.png)
