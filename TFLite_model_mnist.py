@@ -28,12 +28,12 @@ x_test = x_test / 255
 
 # Nous allons créer une fonction **evaluate_model** qui permettra de faire les prédictions de nos modèles convertis et de calculer la précision de ces derniers. Enfin, nous comparons cette précision avec celle du modèle d'origine.
 
-# In[101]:
+# In[102]:
 
 
 # Instantiate an interpreter for each model
-mnist_model = tf.lite.Interpreter('mnist_model-2.tflite')
-mnist_model_quantized = tf.lite.Interpreter('mnist_model_quantized-2.tflite')
+mnist_model = tf.lite.Interpreter('mnist_model.tflite')
+mnist_model_quantized = tf.lite.Interpreter('mnist_model_quantized.tflite')
 # Allocate memory for each model
 mnist_model.allocate_tensors()
 mnist_model_quantized.allocate_tensors()
@@ -61,16 +61,14 @@ def evaluate_model(interpreter):
     for j in range(len(mnist_model_predictions)):
         if mnist_model_predictions[j] == y_test[j]:
             count+=1
-    print(count)
     count = 100 * count / len(mnist_model_predictions)
     return count
 
-#new_model = tf.keras.models.load_model('mnist_model_origin')
+new_model = tf.keras.models.load_model('mnist_model_origin')
 
-#loss, acc = new_model.evaluate(x_test,  y_test)
-#print('Restored model, accuracy: {:5.2f}%'.format(100*acc))
-#print("TFLite model accuracy:", evaluate_model(mnist_model))
-print("TFLite model accuracy: {:5.2f}".format(evaluate_model(mnist_model)))
+loss, acc = new_model.evaluate(x_test,  y_test)
+print('Restored model, accuracy: {:5.2f}%'.format(100*acc))
+print("TFLite model accuracy: {:5.2f".format(evaluate_model(mnist_model)))
 print("TFLite Quantized model accuracy:", evaluate_model(mnist_model_quantized))
 
 
@@ -81,7 +79,7 @@ print("TFLite Quantized model accuracy:", evaluate_model(mnist_model_quantized))
 # In[94]:
 
 
-'''import os
+import os
 #Compare size of converted models with origina model
 basic_model_size = os.path.getsize("mnist_model.tflite")
 print("Basic model is %d bytes" % basic_model_size)
@@ -92,7 +90,7 @@ print("Ratio between basic_model and quantized model is %d" % ratio)
 original_model_size = os.path.getsize("mnist_model_origin/saved_model.pb")+os.path.getsize("mnist_model_origin/variables/variables.data-00000-of-00001")+os.path.getsize("mnist_model_origin/variables/variables.index")
 print("Original model is %d bytes" % original_model_size)
 ratio = original_model_size / basic_model_size
-print("Ratio between basic_model and quantized model is %d" % ratio)'''
+print("Ratio between basic_model and quantized model is %d" % ratio)
 
 
 # Nous pouvons voir que le modèle d'origine fait 1,6 Mo environ. Le modèle **TF Lite** non quantifié est deux fois plus petit avec 700 Ko environ et le modèle **TF Lite** quantifié est quant à lui 3 fois plus petit que le modèle non quantifié et fait environ 180 Ko.
